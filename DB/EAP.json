@@ -1,0 +1,63 @@
+{
+  "contrato": {
+    "id": 1,
+    "nome": "Obra Exemplo",
+    "descricao": "Construção de um edifício"
+  },
+  "entregaveis": [
+    {
+      "id": 1,
+      "nome": "Estrutura",
+      "descricao": "Execução da estrutura de concreto",
+      "itens": [
+        {
+          "id": 101,
+          "nome": "Concreto Usinado",
+          "tipo": "material",
+          "unidade": "m³",
+          "custo": 250.00,
+          "quantidade": 50,
+          "composicao": [
+            {
+              "id": 201,
+              "nome": "Cimento",
+              "tipo": "material",
+              "unidade": "saco",
+              "quantidade": 500
+            },
+            {
+              "id": 202,
+              "nome": "Areia",
+              "tipo": "material",
+              "unidade": "m³",
+              "quantidade": 30
+            },
+            {
+              "id": 203,
+              "nome": "Brita",
+              "tipo": "material",
+              "unidade": "m³",
+              "quantidade": 40
+            },
+            {
+              "id": 204,
+              "nome": "Água",
+              "tipo": "material",
+              "unidade": "litros",
+              "quantidade": 5000
+            }
+          ]
+        },
+        {
+          "id": 102,
+          "nome": "Mão de Obra Concretagem",
+          "tipo": "serviço",
+          "unidade": "hora",
+          "custo": 50.00,
+          "quantidade": 200
+        }
+      ]
+    }
+  ]
+}
+
