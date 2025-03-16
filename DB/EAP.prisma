@@ -1,0 +1,148 @@
+model SecaoContrato {
+    codigo       String               @id
+    codigo_cc    String
+    descricao    String
+    codigo_pai   String?
+    centro_custo CentroCustos         @relation(fields: [codigo_cc], references: [codigo])
+    composicoes  ComposicaoContrato[]
+    @@map("secoes_contrato")
+}
+
+//composições de custo começa aqui
+
+model ComposicaoContrato {
+    codigo           String             @id
+    codigo_orgao String
+    codigo_cc        String
+    descricao        String
+    unidade          String
+    quantidade       Float
+    valor_unit       Float
+    codigo_pai       String?
+    itens_composicao ItemCompContrato[]
+    codigo_secao     String?
+    secao            SecaoContrato?     @relation(fields: [codigo_secao], references: [codigo])
+    @@map("composicoes_contrato")
+}
+
+model ItemCompContrato {
+    codigo            String             @id
+    indice            Float
+    codigo_insumo     String             @unique
+    insumo            InsumoContrato     @relation(fields: [codigo_insumo], references: [codigo], onDelete: Cascade)
+    codigo_composicao String
+    composicao        ComposicaoContrato @relation(fields: [codigo_composicao], references: [codigo], onDelete: Cascade)
+    @@map("itens_composicao_contrato")
+}
+
+model InsumoContrato {
+    codigo          String            @id
+    codigo_cc       String
+    descricao       String
+    unidade         String
+    valor_unit      Float
+    tipo            String //Material, Mão de obra, Equipamento, serviço terceirizado
+    item_composicao ItemCompContrato?
+    @@unique([codigo, valor_unit])
+    @@map("insumos_contrato")
+}
+
+===========================================================================================
+
+model CentroCustos {
+    codigo             String          @id
+    nome_fantasia      String
+    nome_completo      String
+    contrato           Contrato?
+    planilha_orcamento SecaoContrato[]
+    status             String
+    endereco           Endereco?
+    @@map("centro_custos")
+}
+
+model Contrato {
+    id                  Int          @id @default(autoincrement())
+    regime_execucao     String //Preço global, Preço unitário ...
+    cliente             String
+    fiscalizacao        String
+    objeto              String
+    valor               Float
+    codigo_centro_custo String       @unique
+    centro_custo        CentroCustos @relation(fields: [codigo_centro_custo], references: [codigo], onDelete: Cascade)
+    dags                Dag[]
+    impostos            Impostos?
+    @@map("contratos")
+
+}
+
+model Impostos {
+    id          Int      @id @default(autoincrement())
+    iss         Float    @default(0)
+    pis         Float    @default(0)
+    cofins      Float    @default(0)
+    ir          Float    @default(0)
+    inss        Float    @default(0)
+    csll        Float    @default(0)
+    contrato_id Int      @unique
+    contrato    Contrato @relation(fields: [contrato_id], references: [id], onDelete: Cascade)
+    @@map("impostos")
+}
+
+model Dag {
+    id          Int      @id @default(autoincrement())
+    nome        String
+    valor       Float
+    contrato_id Int
+    contrato    Contrato @relation(fields: [contrato_id], references: [id], onDelete: Cascade)
+    @@map("dags")
+}
+
+model SecaoContrato {
+    codigo       String               @id
+    codigo_cc    String
+    descricao    String
+    codigo_pai   String?
+    centro_custo CentroCustos         @relation(fields: [codigo_cc], references: [codigo])
+    composicoes  ComposicaoContrato[]
+    @@map("secoes_contrato")
+}
+
+//composições de custo começa aqui
+
+model ComposicaoContrato {
+    codigo           String             @id
+    codigo_orgao String
+    codigo_cc        String
+    descricao        String
+    unidade          String
+    quantidade       Float
+    valor_unit       Float
+    codigo_pai       String?
+    itens_composicao ItemCompContrato[]
+    codigo_secao     String?
+    secao            SecaoContrato?     @relation(fields: [codigo_secao], references: [codigo])
+    @@map("composicoes_contrato")
+}
+
+model ItemCompContrato {
+    codigo            String             @id
+    indice            Float
+    codigo_insumo     String             @unique
+    insumo            InsumoContrato     @relation(fields: [codigo_insumo], references: [codigo], onDelete: Cascade)
+    codigo_composicao String
+    composicao        ComposicaoContrato @relation(fields: [codigo_composicao], references: [codigo], onDelete: Cascade)
+    @@map("itens_composicao_contrato")
+}
+
+model InsumoContrato {
+    codigo          String            @id
+    codigo_cc       String
+    descricao       String
+    unidade         String
+    valor_unit      Float
+    tipo            String //Material, Mão de obra, Equipamento, serviço terceirizado
+    item_composicao ItemCompContrato?
+    @@unique([codigo, valor_unit])
+    @@map("insumos_contrato")
+}
+
