@@ -17,9 +17,10 @@ CREATE TABLE centro_custo (
 -- Tabela: Custo por Unidade (CPU)
 CREATE TABLE custo_unidade (
     id_custo_unidade SERIAL PRIMARY KEY,
+    codigo INT NOT NULL,
     descricao VARCHAR(255) NOT NULL,
     unidade_medida VARCHAR(50), -- Ex.: m², m³, hora
-    valor_unitario DECIMAL(15, 2) NOT NULL CHECK (valor_unitario >= 0)
+    valor_total DECIMAL(15, 2) NOT NULL CHECK (valor_total >= 0)
 );
 
 -- Tabela: Orçamento Aprovado (liga Projeto, Centro de Custo e Custo por Unidade)
@@ -29,7 +30,7 @@ CREATE TABLE orcamento_aprovado (
     id_centro_custo INT NOT NULL,
     id_custo_unidade INT NOT NULL,
     valor_total_aprovado DECIMAL(15, 2) NOT NULL CHECK (valor_total_aprovado >= 0),
-    data_aprovacao DATE NOT NULL,
+    data_aprovacao DATE NOT NULL,    
     descricao VARCHAR(255),
     FOREIGN KEY (id_projeto) REFERENCES projeto(id_projeto) ON DELETE CASCADE,
     FOREIGN KEY (id_centro_custo) REFERENCES centro_custo(id_centro_custo) ON DELETE RESTRICT,
@@ -41,7 +42,8 @@ CREATE TABLE item (
     id_item SERIAL PRIMARY KEY,
     descricao VARCHAR(255) NOT NULL,
     tipo_item VARCHAR(50) NOT NULL CHECK (tipo_item IN ('Material', 'Serviço', 'Equipamento', 'Terceirizado')),
-    unidade_medida VARCHAR(50)
+    unidade_medida VARCHAR(50),
+    valor_unitario DECIMAL(15, 2) NOT NULL CHECK (quantidade >= 0)
 );
 
 -- Tabela: Composição do Item (duas ligações com Item: pai e filho)
