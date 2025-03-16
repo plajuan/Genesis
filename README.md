@@ -9,9 +9,12 @@ O sistema foi modelado em SQL, convertido para o ORM Prisma e exemplificado em J
 ## Estrutura do Banco de Dados
 
 O sistema é composto por 9 tabelas inter-relacionadas, cada uma com um propósito específico.
+
 [EAP.sql](./DB/EAP.sql)
 
 ### Tabelas e Relacionamentos
+
+![Esquema Banco de dados](./EAP.png)
 
 - **`projeto`**
   - **Descrição**: Representa a obra ou empreendimento (ex.: "Construção de Edifício Residencial").
