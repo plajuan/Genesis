@@ -1,63 +1,320 @@
 {
-  "contrato": {
-    "id": 1,
-    "nome": "Obra Exemplo",
-    "descricao": "Construção de um edifício"
-  },
-  "entregaveis": [
+  "projeto": [
     {
-      "id": 1,
-      "nome": "Estrutura",
-      "descricao": "Execução da estrutura de concreto",
-      "itens": [
+      "idProjeto": 1,
+      "nomeProjeto": "Construção de Edifício Residencial",
+      "dataInicio": "2025-03-16",
+      "dataFimPrevista": "2026-03-16",
+      "descricao": "Edifício residencial de 10 andares",
+      "orcamentos": [
         {
-          "id": 101,
-          "nome": "Concreto Usinado",
-          "tipo": "material",
-          "unidade": "m³",
-          "custo": 250.00,
-          "quantidade": 50,
-          "composicao": [
+          "idOrcamento": 1,
+          "idProjeto": 1,
+          "idCentroCusto": 1,
+          "idCustoUnidade": 1,
+          "valorTotalAprovado": 150000.00,
+          "dataAprovacao": "2025-03-15",
+          "descricao": "Orçamento para fundação",
+          "centroCusto": {
+            "idCentroCusto": 1,
+            "descricao": "Fundação",
+            "codigo": "FUN"
+          },
+          "custoUnidade": {
+            "idCustoUnidade": 1,
+            "codigo": 1001,
+            "descricao": "Concreto Armado",
+            "unidadeMedida": "m³",
+            "valorTotal": 500.00,
+            "cpuItens": [
+              {
+                "idCpuItem": 1,
+                "idCustoUnidade": 1,
+                "idItem": 1,
+                "quantidadePrevista": 300,
+                "item": {
+                  "idItem": 1,
+                  "descricao": "Concreto Armado",
+                  "tipoItem": "Material",
+                  "unidadeMedida": "m³",
+                  "valorUnitario": 500.00,
+                  "composicoesPai": [
+                    {
+                      "idComposicao": 1,
+                      "idItemPai": 1,
+                      "idItemFilho": 2,
+                      "quantidade": 5,
+                      "itemFilho": {
+                        "idItem": 2,
+                        "descricao": "Cimento",
+                        "tipoItem": "Material",
+                        "unidadeMedida": "saco",
+                        "valorUnitario": 30.00
+                      }
+                    },
+                    {
+                      "idComposicao": 2,
+                      "idItemPai": 1,
+                      "idItemFilho": 3,
+                      "quantidade": 0.5,
+                      "itemFilho": {
+                        "idItem": 3,
+                        "descricao": "Areia",
+                        "tipoItem": "Material",
+                        "unidadeMedida": "m³",
+                        "valorUnitario": 80.00
+                      }
+                    },
+                    {
+                      "idComposicao": 3,
+                      "idItemPai": 1,
+                      "idItemFilho": 4,
+                      "quantidade": 0.2,
+                      "itemFilho": {
+                        "idItem": 4,
+                        "descricao": "Mão de Obra de Pedreiro",
+                        "tipoItem": "Serviço",
+                        "unidadeMedida": "hora",
+                        "valorUnitario": 50.00
+                      }
+                    },
+                    {
+                      "idComposicao": 4,
+                      "idItemPai": 1,
+                      "idItemFilho": 5,
+                      "quantidade": 0.3,
+                      "itemFilho": {
+                        "idItem": 5,
+                        "descricao": "Mão de Obra de Servente",
+                        "tipoItem": "Serviço",
+                        "unidadeMedida": "hora",
+                        "valorUnitario": 30.00
+                      }
+                    },
+                    {
+                      "idComposicao": 5,
+                      "idItemPai": 1,
+                      "idItemFilho": 6,
+                      "quantidade": 0.1,
+                      "itemFilho": {
+                        "idItem": 6,
+                        "descricao": "Horas de Betoneira",
+                        "tipoItem": "Equipamento",
+                        "unidadeMedida": "hora",
+                        "valorUnitario": 80.00
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "orcamentoItens": [
             {
-              "id": 201,
-              "nome": "Cimento",
-              "tipo": "material",
-              "unidade": "saco",
-              "quantidade": 500
-            },
-            {
-              "id": 202,
-              "nome": "Areia",
-              "tipo": "material",
-              "unidade": "m³",
-              "quantidade": 30
-            },
-            {
-              "id": 203,
-              "nome": "Brita",
-              "tipo": "material",
-              "unidade": "m³",
-              "quantidade": 40
-            },
-            {
-              "id": 204,
-              "nome": "Água",
-              "tipo": "material",
-              "unidade": "litros",
-              "quantidade": 5000
+              "idOrcamentoItem": 1,
+              "idOrcamento": 1,
+              "idItem": 1,
+              "quantidadeOrcada": 300,
+              "valorOrcado": 150000.00,
+              "item": {
+                "idItem": 1,
+                "descricao": "Concreto Armado",
+                "tipoItem": "Material",
+                "unidadeMedida": "m³",
+                "valorUnitario": 500.00
+              },
+              "execucoes": [
+                {
+                  "idExecucao": 1,
+                  "idOrcamentoItem": 1,
+                  "dataExecucao": "2025-03-20",
+                  "quantidadeExecutada": 100,
+                  "valorExecutado": 50000.00,
+                  "descricao": "Concretagem das sapatas",
+                  "criadoEm": "2025-03-20T10:00:00Z"
+                }
+              ]
             }
           ]
-        },
-        {
-          "id": 102,
-          "nome": "Mão de Obra Concretagem",
-          "tipo": "serviço",
-          "unidade": "hora",
-          "custo": 50.00,
-          "quantidade": 200
         }
       ]
     }
-  ]
-}
-
+  ],
+  "centroCusto": [
+    {
+      "idCentroCusto": 1,
+      "descricao": "Fundação",
+      "codigo": "FUN"
+    }
+  ],
+  "custoUnidade": [
+    {
+      "idCustoUnidade": 1,
+      "codigo": 1001,
+      "descricao": "Concreto Armado",
+      "unidadeMedida": "m³",
+      "valorTotal": 500.00,
+      "cpuItens": [
+        {
+          "idCpuItem": 1,
+          "idCustoUnidade": 1,
+          "idItem": 1,
+          "quantidadePrevista": 300,
+          "item": {
+            "idItem": 1,
+            "descricao": "Concreto Armado",
+            "tipoItem": "Material",
+            "unidadeMedida": "m³",
+            "valorUnitario": 500.00,
+            "composicoesPai": [
+              {
+                "idComposicao": 1,
+                "idItemPai": 1,
+                "idItemFilho": 2,
+                "quantidade": 5,
+                "itemFilho": {
+                  "idItem": 2,
+                  "descricao": "Cimento",
+                  "tipoItem": "Material",
+                  "unidadeMedida": "saco",
+                  "valorUnitario": 30.00
+                }
+              },
+              {
+                "idComposicao": 2,
+                "idItemPai": 1,
+                "idItemFilho": 3,
+                "quantidade": 0.5,
+                "itemFilho": {
+                  "idItem": 3,
+                  "descricao": "Areia",
+                  "tipoItem": "Material",
+                  "unidadeMedida": "m³",
+                  "valorUnitario": 80.00
+                }
+              },
+              {
+                "idComposicao": 3,
+                "idItemPai": 1,
+                "idItemFilho": 4,
+                "quantidade": 0.2,
+                "itemFilho": {
+                  "idItem": 4,
+                  "descricao": "Mão de Obra de Pedreiro",
+                  "tipoItem": "Serviço",
+                  "unidadeMedida": "hora",
+                  "valorUnitario": 50.00
+                }
+              },
+              {
+                "idComposicao": 4,
+                "idItemPai": 1,
+                "idItemFilho": 5,
+                "quantidade": 0.3,
+                "itemFilho": {
+                  "idItem": 5,
+                  "descricao": "Mão de Obra de Servente",
+                  "tipoItem": "Serviço",
+                  "unidadeMedida": "hora",
+                  "valorUnitario": 30.00
+                }
+              },
+              {
+                "idComposicao": 5,
+                "idItemPai": 1,
+                "idItemFilho": 6,
+                "quantidade": 0.1,
+                "itemFilho": {
+                  "idItem": 6,
+                  "descricao": "Horas de Betoneira",
+                  "tipoItem": "Equipamento",
+                  "unidadeMedida": "hora",
+                  "valorUnitario": 80.00
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "item": [
+    {
+      "idItem": 1,
+      "descricao": "Concreto Armado",
+      "tipoItem": "Material",
+      "unidadeMedida": "m³",
+      "valorUnitario": 500.00,
+      "composicoesPai": [
+        {
+          "idComposicao": 1,
+          "idItemPai": 1,
+          "idItemFilho": 2,
+          "quantidade": 5,
+          "itemFilho": {
+            "idItem": 2,
+            "descricao": "Cimento",
+            "tipoItem": "Material",
+            "unidadeMedida": "saco",
+            "valorUnitario": 30.00
+          }
+        },
+        {
+          "idComposicao": 2,
+          "idItemPai": 1,
+          "idItemFilho": 3,
+          "quantidade": 0.5,
+          "itemFilho": {
+            "idItem": 3,
+            "descricao": "Areia",
+            "tipoItem": "Material",
+            "unidadeMedida": "m³",
+            "valorUnitario": 80.00
+          }
+        },
+        {
+          "idComposicao": 3,
+          "idItemPai": 1,
+          "idItemFilho": 4,
+          "quantidade": 0.2,
+          "itemFilho": {
+            "idItem": 4,
+            "descricao": "Mão de Obra de Pedreiro",
+            "tipoItem": "Serviço",
+            "unidadeMedida": "hora",
+            "valorUnitario": 50.00
+          }
+        },
+        {
+          "idComposicao": 4,
+          "idItemPai": 1,
+          "idItemFilho": 5,
+          "quantidade": 0.3,
+          "itemFilho": {
+            "idItem": 5,
+            "descricao": "Mão de Obra de Servente",
+            "tipoItem": "Serviço",
+            "unidadeMedida": "hora",
+            "valorUnitario": 30.00
+          }
+        },
+        {
+          "idComposicao": 5,
+          "idItemPai": 1,
+          "idItemFilho": 6,
+          "quantidade": 0.1,
+          "itemFilho": {
+            "idItem": 6,
+            "descricao": "Horas de Betoneira",
+            "tipoItem": "Equipamento",
+            "unidadeMedida": "hora",
+            "valorUnitario": 80.00
+          }
+        }
+      ]
+    },
+    {
+      "idItem": 2,
+      "descricao": "Cimento",
+      "tipoItem": "Material",
+      "unidadeMedida": "s
