@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/ordem_compra_mui/node_modules
+/ordem_compra_mui/.pnp
+/ordem_compra_mui/.pnp.js
+
+# testing
+/ordem_compra_mui/coverage
+
+# production
+/ordem_compra_mui/build
+
+# misc
+/ordem_compra_mui/.DS_Store
+/ordem_compra_mui/.env.local
+/ordem_compra_mui/.env.development.local
+/ordem_compra_mui/.env.test.local
+/ordem_compra_mui/.env.production.local
+
+/ordem_compra_mui/npm-debug.log*
+/ordem_compra_mui/yarn-debug.log*
+/ordem_compra_mui/yarn-error.log*
